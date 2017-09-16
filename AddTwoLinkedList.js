@@ -72,10 +72,21 @@ var addTwoNumbers = function(l1, l2) {
 
 var addTwoList = function (l1, l2) {
   var array = [];
-  while(l1 && l2){
-    array.push(l1.val + l2.val)
-    l1 = l1.next;
-    l2 = l2.next;
+  while(l1 || l2){
+    console.log(l1, l2)
+    if(l2 === null || l1 === null){
+      if(l1.val === null){
+        array.push(l2.val);
+        l2 = l2.next;
+      } else {
+        array.push(l1.val);
+        l1 = l1.next;
+      }
+    } else {
+      array.push(l1.val + l2.val)
+      l1 = l1.next;
+      l2 = l2.next;
+    }
   }
   array.forEach( (ele, idx)=>{
     if(ele >= 10){
@@ -107,15 +118,21 @@ var addTwoList = function (l1, l2) {
 
 }
 
-var linkedList1st = new ListNode(2);
-var linkedList2nd = linkedList1st.next = new ListNode(4);
-var linkedList3rd = linkedList2nd.next = new ListNode(3);
+// var linkedList1st = new ListNode(2);
+// var linkedList2nd = linkedList1st.next = new ListNode(4);
+// var linkedList3rd = linkedList2nd.next = new ListNode(3);
 
 
-var seconnd = new ListNode(5);
-seconnd.next = new ListNode(6);
-seconnd.next.next = new ListNode(4);
+// var seconnd = new ListNode(5);
+// seconnd.next = new ListNode(6);
+// seconnd.next.next = new ListNode(4);
+
+var l1 = new ListNode(1);
+l1.next = new ListNode(8);
+
+var l2 = new ListNode(0);
 
 // console.log(linkedList1st, seconnd)
 // console.log(addTwoNumbers(linkedList1st, seconnd))
-console.log(addTwoList(linkedList1st, seconnd));
+// console.log(addTwoList(linkedList1st, seconnd));
+console.log(addTwoList(l1,l2))
