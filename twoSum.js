@@ -6,16 +6,15 @@
 var twoSum = function(nums, target) {
   var numsObject = {};
   for(var i = 0; i< nums.length; i++){
-    console.log(nums[i])
     if( numsObject[target - nums[i]] !== undefined ){
-      return true;
+      return [ numsObject[target - nums[i]] ,i];
     } 
     if( numsObject[nums[i]]=== undefined){
       numsObject[nums[i]] = i;
     }
   }
-  return false;
+  return [];
 };
 
 
-console.log(twoSum([1,2,3,4,5], 3))
+console.log(twoSum([3,2,4], 6))
