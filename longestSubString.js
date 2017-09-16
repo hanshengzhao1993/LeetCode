@@ -3,29 +3,22 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-  var object = {};
-  var higestCount = 0;
-  for(var i = 0; i< s.length; i++){
-    if(object[s[i]] === undefined){
-      object[s[i]] = 1;
-    } else{
-      if(Object.keys(object).length > higestCount){
-        higestCount = Object.keys(object).length;
-      }
-        object = new Object;
-        object[s[i]] = 1;
-        console.log(object)
+  var obj = {};
+  var max = 0;
+
+  for(var i =0, j =0; i < s.length; i++){
+    if( obj[s[i]] !== undefined ){
+      j = Math.max( j, obj[s[i]] + 1 );
     }
+    obj[s[i]] = i;
+    max = Math.max( max, i - j + 1 );
   }
-  console.log(object)
-  if(Object.keys(object).length > higestCount){
-    higestCount = Object.keys(object).length;
-  }
-  return higestCount;
+
+  return max
 };
 
-// console.log(lengthOfLongestSubstring("abcabcbb"))
-// console.log(lengthOfLongestSubstring("bbbbbb"))
-// console.log(lengthOfLongestSubstring("pwwkew"))
-// console.log(lengthOfLongestSubstring("aab"));
-console.log(lengthOfLongestSubstring("dvdf"));
+console.log(lengthOfLongestSubstring("abcabcbb") === 3)
+console.log(lengthOfLongestSubstring("bbbbbb") === 1)
+console.log(lengthOfLongestSubstring("pwwkew") === 3)
+console.log(lengthOfLongestSubstring("aab")=== 2);
+console.log(lengthOfLongestSubstring("dvdf") === 3);
